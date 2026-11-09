@@ -15,14 +15,13 @@
 
 .value-star{width:28px;height:28px;display:block}
 
-/* The source wordmark has black lettering: a soft light surface preserves it
-   without recolouring the official artwork. Dimensions retain its 134:96 ratio. */
-.logo-plate{display:flex;align-items:center;justify-content:center;background:#e9e6e1;border:1px solid #fff3;border-radius:6px;padding:4px 8px}
-.logo-plate img{display:block;width:76px;height:auto;object-fit:contain}
+/* Vector artwork keeps the red symbol on the dark surface. A narrow white
+   backing inside the SVG preserves the original black wordmark's contrast. */
+.brand-vector{display:block;width:84px;height:auto;object-fit:contain}
 .official-art{background:radial-gradient(ellipse at center,#e5091418,transparent 70%)}
-.official-logo-panel{padding:22px;border-radius:16px;background:linear-gradient(135deg,#f1efeb,#d8d4ce);box-shadow:0 18px 60px #0005;border:1px solid #fff4}
-.official-logo-panel picture{display:block}
-.official-animation{display:block;width:268px;max-width:100%;height:auto;object-fit:contain}
+.official-vector{display:block;width:300px;max-width:85%;height:auto;object-fit:contain;animation:logo-drift 5s ease-in-out infinite}
+@keyframes logo-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .hero-copy .telegram-note{color:#ddd;margin:0 0 20px;font-size:12px;max-width:360px}
 .official-art .art-label{color:var(--muted);right:auto;bottom:20px}
-@media(max-width:640px){.logo-plate{padding:3px 7px}.logo-plate img{width:62px}.official-animation{width:234px}.official-logo-panel{padding:20px}.official-art{min-height:290px}.footer-top .logo{width:auto}}
+@media(max-width:640px){.brand-vector{width:72px}.official-vector{width:250px}.official-art{min-height:290px}.footer-top .logo{width:auto}}
+@media(prefers-reduced-motion:reduce){.official-vector{animation:none;transform:none}}
