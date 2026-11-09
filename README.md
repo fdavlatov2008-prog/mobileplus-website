@@ -20,6 +20,7 @@ Edit `STORE_CONFIG` at the top of `script.js`:
 - `description`: introduction and SEO description.
 - `phones`: a list of verified phone numbers in international format; valid numbers become click-to-call links.
 - `telegramUrl`, `instagramUrl`: full HTTPS social URLs.
+- `instagramUsername`: display handle, currently `@mobileplus_izza`. Keep the Instagram hrefs in index.html in sync for use without JavaScript.
 - `address`: verified location name or physical address (currently Izza ShowRoom; no street address has been supplied).
 - `googleMapsUrl`: full HTTPS Google Maps place/directions URL. Enables the map button; no API key required.
 - `googleMapsEmbedUrl`: the `src` URL from Google Maps → Share → Embed a map. Only HTTPS `www.google.com/maps/embed…` or `maps.google.com/maps/embed…` URLs are accepted. This replaces the schematic panel with a responsive, lazy-loaded Google Maps iframe; no API key is required. Do not paste the entire iframe HTML.
@@ -37,10 +38,10 @@ Check desktop and mobile layouts, mobile navigation (including Escape), keyboard
 
 Use the repository root as the output directory (`.`), no framework preset, and no build command. Serve index.html, styles.css, script.js, and the assets directory together. No environment variables or secrets are needed. This project has not been deployed as part of implementation.
 
-## Official logo
+## Vector logo
 
-The hero uses the local transparent animated `assets/mobileplus-logo.webp` (about 203 KiB). A `picture` media source selects `assets/mobileplus-logo-static.png` for reduced motion, including when the system preference changes. The same still is used in navigation and footer, and is the animation load-error fallback. No third-party media requests or autoplay permission are needed. A transparent VP9 `assets/mobileplus-logo.webm` is also included as an alternative export; the page uses WebP for consistent browser transparency.
+The hero, navigation, and footer use `assets/mobileplus-logo.svg`. It contains only vector paths and a small white backing behind the black/red wordmark: no raster image, runtime font, remote resource, or large grey panel. The hero has a subtle CSS drift loop; reduced-motion preferences disable it immediately. Navigation and footer remain static. Without CSS animation, the SVG itself is the still fallback. The previous WebP/PNG/WebM files remain as reference assets and are no longer requested by the page.
 
-The supplied 252×126 MP4 contained 48 frames at 30fps. The artwork was cropped to 134×96 at source coordinates x=54, y=9, preserving its proportions, frame order, and approximately 1.6-second loop. Background colour was estimated per row from empty side strips. Separate highlight/red and spatially restricted dark-wordmark masks preserve black lettering; partial edge pixels were decontaminated against the original blue-black matte. No artwork was redrawn, recoloured, or replaced. Transparent margins and black text were checked against a light background. The light display surface keeps the original black wordmark readable within the dark page. The original recording's low resolution and compression remain visible; these exports do not claim vector quality or a perfect original production alpha channel.
+The red frame, inset M, upper-right plus, and wordmark proportions were reconstructed against the supplied low-resolution recording and reference frames. Lettering uses fitted, outlined Liberation Sans Bold contours (SIL Open Font License; no font file is loaded). This is a recognizable vector reconstruction, not a claim of an identical official master: the original typeface, tiny corner details, and exact spacing cannot be recovered reliably from a 252×126 video. The motion is a restrained new CSS drift, rather than an inaccurate recreation of the raster highlight sweep. Use a supplied official vector master in future if exact brand geometry becomes available.
 
-The business has supplied opening/closing times only. Keep `Ish vaqti: 08:00–19:00` without adding days of operation. Exact Maps and Instagram URLs remain empty in STORE_CONFIG.
+Verified store details remain Izza ShowRoom, +998 33 881 87 88, the Telegram channel, Instagram `@mobileplus_izza`, and `Ish vaqti: 08:00–19:00`. Do not add operating days. Exact Maps URLs remain empty in STORE_CONFIG. This change does not deploy or alter Cloudflare/DNS settings; the connected Pages project deploys when changes are merged into main.

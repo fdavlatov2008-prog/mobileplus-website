@@ -6,7 +6,8 @@ const STORE_CONFIG = {
   description: 'MobilePlus — mobil telefon aksessuarlari do‘koni. Kundalik hayotingizga mos aksessuarlarni biz bilan toping.',
   phones: ['+998 33 881 87 88'],
   telegramUrl: 'https://t.me/+aIpqQbcHotplNzcy',
-  instagramUrl: '',
+  instagramUrl: 'https://www.instagram.com/mobileplus_izza/',
+  instagramUsername: '@mobileplus_izza',
   address: 'Izza ShowRoom',
   googleMapsUrl: '',
   // Paste only the src URL from Google Maps → Share → Embed a map.
@@ -18,7 +19,7 @@ const icons = {
   pin: '<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   telegram: '<path d="m21 3-4 18-6-5-4 3 1-7L21 3 3 10l5 2 9-6-6 10"/>',
-  instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
+  instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".75" fill="currentColor" stroke="none"/>',
   phone: '<path d="m8 3 3 5-3 3a14 14 0 0 0 5 5l3-3 5 3c0 3-2 5-5 5C9 20 4 15 3 8c0-3 2-5 5-5Z"/>'
 };
 document.querySelectorAll('[data-icon]').forEach(element => {
@@ -27,6 +28,7 @@ document.querySelectorAll('[data-icon]').forEach(element => {
 });
 const setText = (selector, value) => { if (value) document.querySelectorAll(selector).forEach(el => { el.textContent = value; }); };
 setText('[data-name]', STORE_CONFIG.name);
+setText('[data-instagram-username]', STORE_CONFIG.instagramUsername);
 setText('[data-description]', STORE_CONFIG.description);
 setText('[data-address]', STORE_CONFIG.address);
 setText('[data-hours]', STORE_CONFIG.businessHours);
@@ -121,15 +123,4 @@ document.querySelectorAll('span[aria-hidden="true"], .card-arrow, .contact-banne
   if (symbol === '↗' || symbol === '↓') {
     element.innerHTML = `<svg class="direction-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="${symbol === '↗' ? 'M6 18 18 6M6 6h12v12' : 'M12 4v16m-6-6 6 6 6-6'}"/></svg>`;
   }
-});
-
-// Animated WebP is local, transparent, and loops without autoplay permissions.
-// The picture source selects a still image when reduced motion is requested.
-document.querySelectorAll('[data-logo-animation]').forEach(image => {
-  const useStaticLogo = () => {
-    image.src = 'assets/mobileplus-logo-static.png';
-  };
-  image.addEventListener('error', useStaticLogo, { once: true });
-  // A local image can fail before this deferred script has executed.
-  if (image.complete && image.naturalWidth === 0) useStaticLogo();
 });
