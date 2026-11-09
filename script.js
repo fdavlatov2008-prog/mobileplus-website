@@ -4,14 +4,14 @@
 const STORE_CONFIG = {
   name: 'MobilePlus',
   description: 'MobilePlus — mobil telefon aksessuarlari do‘koni. Kundalik hayotingizga mos aksessuarlarni biz bilan toping.',
-  phones: ['', ''],
-  telegramUrl: '',
+  phones: ['+998 33 881 87 88'],
+  telegramUrl: 'https://t.me/+aIpqQbcHotplNzcy',
   instagramUrl: '',
-  address: '',
+  address: 'Izza ShowRoom',
   googleMapsUrl: '',
   // Paste only the src URL from Google Maps → Share → Embed a map.
   googleMapsEmbedUrl: '',
-  businessHours: ''
+  businessHours: 'Ish vaqti: 08:00–19:00'
 };
 
 const icons = {
@@ -78,8 +78,8 @@ if (embedUrl) {
 }
 const phoneList = document.querySelector('[data-phones]');
 phoneList.replaceChildren();
-[0, 1].forEach(index => {
-  const phone = (STORE_CONFIG.phones[index] || '').trim();
+(STORE_CONFIG.phones.length ? STORE_CONFIG.phones : ['']).forEach((value, index) => {
+  const phone = (value || '').trim();
   const valid = /^\+?[\d\s().-]{7,25}$/.test(phone);
   const el = document.createElement(valid ? 'a' : 'span');
   el.className = 'contact-value';
@@ -121,4 +121,15 @@ document.querySelectorAll('span[aria-hidden="true"], .card-arrow, .contact-banne
   if (symbol === '↗' || symbol === '↓') {
     element.innerHTML = `<svg class="direction-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="${symbol === '↗' ? 'M6 18 18 6M6 6h12v12' : 'M12 4v16m-6-6 6 6 6-6'}"/></svg>`;
   }
+});
+
+// Animated WebP is local, transparent, and loops without autoplay permissions.
+// The picture source selects a still image when reduced motion is requested.
+document.querySelectorAll('[data-logo-animation]').forEach(image => {
+  const useStaticLogo = () => {
+    image.src = 'assets/mobileplus-logo-static.png';
+  };
+  image.addEventListener('error', useStaticLogo, { once: true });
+  // A local image can fail before this deferred script has executed.
+  if (image.complete && image.naturalWidth === 0) useStaticLogo();
 });
