@@ -10,8 +10,8 @@ const STORE_CONFIG = {
   instagramUsername: '@mobileplus_izza',
   address: 'IzzaShowroom',
   googleMapsUrl: 'https://maps.app.goo.gl/FtAkeCJAVcU43v4T7',
-  // Exact embed still needs verification. Paste the src from Share → Embed a map, never the short link.
-  googleMapsEmbedUrl: '',
+  // Official Share → Embed a map URL supplied by the store; keep the full pb value.
+  googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191900.4812298137!2d68.84339849453126!3d41.2774182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae89857a3c969f%3A0x670438a2106ed66!2sIZZA%20BUILDING!5e0!3m2!1sen!2s!4v1794246201446!5m2!1sen!2s',
   businessHours: 'Ish vaqti: 08:00–19:00'
 };
 
