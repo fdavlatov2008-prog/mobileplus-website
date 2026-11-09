@@ -25,3 +25,15 @@
 .official-art .art-label{color:var(--muted);right:auto;bottom:20px}
 @media(max-width:640px){.brand-vector{width:72px}.official-vector{width:250px}.official-art{min-height:290px}.footer-top .logo{width:auto}}
 @media(prefers-reduced-motion:reduce){.official-vector{animation:none;transform:none}}
+
+/* Verified directions stay available while the exact embed is unconfigured. */
+.location-info>h2{font-size:38px;margin-top:22px;letter-spacing:-1.5px}
+.location-info>h3{margin-top:24px}
+.location-info>.primary{margin-top:6px}
+.map-unavailable{padding:36px;text-align:center;gap:0;background:radial-gradient(ellipse at center,#e509140c,transparent 70%),#131315}
+.map-placeholder-icon{width:34px;height:34px;margin-bottom:20px}
+.map-unavailable h3{font-size:21px;letter-spacing:-.5px;margin:0 0 10px}
+.map-unavailable p{font-size:12px;margin:0 0 24px}
+.map-art{min-height:420px}
+.map-frame{border-radius:0 11px 11px 0}
+@media(max-width:640px){.location-info>h2{font-size:32px}.map-art{min-height:320px}.map-unavailable{padding:30px 20px}.map-frame{border-radius:0 0 11px 11px}}

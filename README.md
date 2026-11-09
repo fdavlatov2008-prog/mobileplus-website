@@ -21,7 +21,7 @@ Edit `STORE_CONFIG` at the top of `script.js`:
 - `phones`: a list of verified phone numbers in international format; valid numbers become click-to-call links.
 - `telegramUrl`, `instagramUrl`: full HTTPS social URLs.
 - `instagramUsername`: display handle, currently `@mobileplus_izza`. Keep the Instagram hrefs in index.html in sync for use without JavaScript.
-- `address`: verified location name or physical address (currently Izza ShowRoom; no street address has been supplied).
+- `address`: verified location name or physical address (currently IzzaShowroom; no street address has been supplied).
 - `googleMapsUrl`: full HTTPS Google Maps place/directions URL. Enables the map button; no API key required.
 - `googleMapsEmbedUrl`: the `src` URL from Google Maps → Share → Embed a map. Only HTTPS `www.google.com/maps/embed…` or `maps.google.com/maps/embed…` URLs are accepted. This replaces the schematic panel with a responsive, lazy-loaded Google Maps iframe; no API key is required. Do not paste the entire iframe HTML.
 - `businessHours`: verified business hours in Uzbek.
@@ -44,4 +44,10 @@ The hero, navigation, and footer use `assets/mobileplus-logo.svg`. It contains o
 
 The red frame, inset M, upper-right plus, and wordmark proportions were reconstructed against the supplied low-resolution recording and reference frames. Lettering uses fitted, outlined Liberation Sans Bold contours (SIL Open Font License; no font file is loaded). This is a recognizable vector reconstruction, not a claim of an identical official master: the original typeface, tiny corner details, and exact spacing cannot be recovered reliably from a 252×126 video. The motion is a restrained new CSS drift, rather than an inaccurate recreation of the raster highlight sweep. Use a supplied official vector master in future if exact brand geometry becomes available.
 
-Verified store details remain Izza ShowRoom, +998 33 881 87 88, the Telegram channel, Instagram `@mobileplus_izza`, and `Ish vaqti: 08:00–19:00`. Do not add operating days. Exact Maps URLs remain empty in STORE_CONFIG. This change does not deploy or alter Cloudflare/DNS settings; the connected Pages project deploys when changes are merged into main.
+Verified store details remain IzzaShowroom, +998 33 881 87 88, the Telegram channel, Instagram `@mobileplus_izza`, and `Ish vaqti: 08:00–19:00`. Do not add operating days. The supplied Maps directions URL is configured; the official iframe embed URL is configured in STORE_CONFIG. This change does not deploy or alter Cloudflare/DNS settings; the connected Pages project deploys when changes are merged into main.
+
+## Location and Google Maps
+
+`address` is `IzzaShowroom` and `googleMapsUrl` is the supplied `https://maps.app.goo.gl/FtAkeCJAVcU43v4T7`. The “Yo‘nalish olish” button uses it and opens safely in a new tab, including without JavaScript. Keep the static hrefs in index.html in sync if this URL changes.
+
+The store has supplied the official Google Maps **Share → Embed a map** URL for IZZA BUILDING. It is now configured in `googleMapsEmbedUrl`; keep its complete `pb` parameter unchanged. The customer-facing location name remains exactly `IzzaShowroom`. The script replaces the fallback panel with a responsive, interactive iframe using lazy loading, a descriptive title, rounded corners, and fullscreen support. Store information sits to its left on desktop and above it on mobile. The directions button retains the original short link. Do not substitute that short redirect URL as the iframe source. If the embed field is intentionally emptied later, the existing fallback panel and directions links remain available.

@@ -8,10 +8,10 @@ const STORE_CONFIG = {
   telegramUrl: 'https://t.me/+aIpqQbcHotplNzcy',
   instagramUrl: 'https://www.instagram.com/mobileplus_izza/',
   instagramUsername: '@mobileplus_izza',
-  address: 'Izza ShowRoom',
-  googleMapsUrl: '',
-  // Paste only the src URL from Google Maps → Share → Embed a map.
-  googleMapsEmbedUrl: '',
+  address: 'IzzaShowroom',
+  googleMapsUrl: 'https://maps.app.goo.gl/FtAkeCJAVcU43v4T7',
+  // Official Share → Embed a map URL supplied by the store; keep the full pb value.
+  googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191900.4812298137!2d68.84339849453126!3d41.2774182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae89857a3c969f%3A0x670438a2106ed66!2sIZZA%20BUILDING!5e0!3m2!1sen!2s!4v1794246201446!5m2!1sen!2s',
   businessHours: 'Ish vaqti: 08:00–19:00'
 };
 
@@ -52,14 +52,17 @@ for (const [key, value] of Object.entries({ telegram: STORE_CONFIG.telegramUrl, 
   if (url) setText(`[data-status="${key}"]`, key === 'telegram' ? 'Kanalga o‘tish ↗' : 'Sahifaga o‘tish ↗');
 }
 const mapUrl = safeUrl(STORE_CONFIG.googleMapsUrl);
-const mapLink = document.querySelector('[data-map]');
-if (mapUrl) {
-  mapLink.href = mapUrl; mapLink.target = '_blank'; mapLink.rel = 'noopener noreferrer';
-  setText('[data-map-caption]', STORE_CONFIG.address || 'Xaritada joylashuvni ko‘ring');
-} else {
-  mapLink.setAttribute('aria-disabled', 'true');
-  mapLink.setAttribute('aria-label', 'Xarita havolasi tez orada qo‘shiladi');
-}
+document.querySelectorAll('[data-map]').forEach(mapLink => {
+  if (mapUrl) {
+    mapLink.href = mapUrl;
+    mapLink.target = '_blank';
+    mapLink.rel = 'noopener noreferrer';
+  } else {
+    mapLink.removeAttribute('href');
+    mapLink.setAttribute('aria-disabled', 'true');
+    mapLink.setAttribute('aria-label', 'Xarita havolasi tez orada qo‘shiladi');
+  }
+});
 // Keep the placeholder until a verified Google Maps embed is configured.
 const embedUrl = safeUrl(STORE_CONFIG.googleMapsEmbedUrl);
 if (embedUrl) {
@@ -67,7 +70,7 @@ if (embedUrl) {
   if (['www.google.com', 'maps.google.com'].includes(parsed.hostname) &&
       /^\/maps\/embed(?:\/|$)/.test(parsed.pathname)) {
     const frame = document.createElement('iframe');
-    frame.title = 'MobilePlus do‘konining Google Maps xaritasi';
+    frame.title = `${STORE_CONFIG.address || STORE_CONFIG.name} — Google Maps xaritasi`;
     frame.src = embedUrl;
     frame.loading = 'lazy';
     frame.referrerPolicy = 'no-referrer-when-downgrade';
@@ -75,6 +78,7 @@ if (embedUrl) {
     frame.className = 'map-frame';
     const panel = document.querySelector('.map-art');
     panel.replaceChildren(frame);
+    panel.classList.remove('map-unavailable');
     panel.classList.add('has-map');
   }
 }
